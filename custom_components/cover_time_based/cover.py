@@ -337,6 +337,8 @@ class CoverTimeBased(CoverEntity, RestoreEntity):
             self.start_auto_updater()
             self._update_tilt_before_travel(SERVICE_CLOSE_COVER)
             await self._async_handle_command(SERVICE_CLOSE_COVER)
+        else:
+            await self._async_handle_command(SERVICE_CLOSE_COVER)
 
     async def async_open_cover(self, **kwargs):
         """Turn the device open."""
@@ -345,6 +347,8 @@ class CoverTimeBased(CoverEntity, RestoreEntity):
             self.travel_calc.start_travel_up()
             self.start_auto_updater()
             self._update_tilt_before_travel(SERVICE_OPEN_COVER)
+            await self._async_handle_command(SERVICE_OPEN_COVER)
+        else:
             await self._async_handle_command(SERVICE_OPEN_COVER)
 
     async def async_close_cover_tilt(self, **kwargs):
@@ -461,12 +465,14 @@ class CoverTimeBased(CoverEntity, RestoreEntity):
 
     async def auto_stop_if_necessary(self):
         """Do auto stop if necessary."""
+        current_position = self.travel_calc.current_position()
         if self.position_reached():
             _LOGGER.debug("auto_stop_if_necessary :: calling stop command")
-            self.travel_calc.stop()
-            if self._has_tilt_support():
-                self.tilt_calc.stop()
-            await self._async_handle_command(SERVICE_STOP_COVER)
+            if current_position > 0 and current_position < 100: 
+                self.travel_calc.stop()
+                if self._has_tilt_support():
+                    self.tilt_calc.stop()
+                await self._async_handle_command(SERVICE_STOP_COVER)
 
     async def set_known_position(self, **kwargs):
         """We want to do a few things when we get a position"""
