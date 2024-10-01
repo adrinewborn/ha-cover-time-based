@@ -9,7 +9,7 @@ A Home Assistant integration to control your cover based on time.
 ![Project Maintenance][maintenance-shield]
 [![GitHub Activity][commits-shield]][commits]
 
-This integration is based on [davidramosweb/home-assistant-custom-components-cover-time-based](https://github.com/Sese-Schneider/ha-cover-time-based).
+This integration is based on [Sese-Schneider/ha-cover-time-based](https://github.com/Sese-Schneider/ha-cover-time-based).
 
 It improves the original integration by adding tilt control.
 
