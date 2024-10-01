@@ -1,4 +1,4 @@
-# Cover time based integration by [@Sese-Schneider](https://www.github.com/Sese-Schneider)
+# Cover time based integration by [@Adrinewborn](https://github.com/adrinewborn)
 A Home Assistant integration to control your cover based on time.
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Sese-Schneider&repository=ha-cover-time-based&category=integration)
